@@ -34,7 +34,7 @@ func _physics_process(delta):
 		motion.x = max(motion.x - XLR8, -SPEED)
 	
 	
-	if is_on_floor():
+	if is_on_floor() || foot_counter > 0:
 		if can_move and Input.is_action_just_pressed("jump"):
 			motion.y = JUMPV
 	
@@ -79,6 +79,8 @@ func reached_goal():
 
 var foot_counter = 0
 var head_counter = 0
+var left_counter = 0
+var right_counter = 0
 
 func check_colliders():
 	if foot_counter > 0 and head_counter > 0:
@@ -104,3 +106,20 @@ func _on_Head_body_entered(body):
 func _on_Head_body_exited(body):
 	if check_body(body):
 		head_counter-=1
+
+
+func _on_Left_body_entered(body):
+	if check_body(body):
+		left_counter+=1
+
+func _on_Left_body_exited(body):
+	if check_body(body):
+		left_counter-=1
+
+func _on_Right_body_entered(body):
+	if check_body(body):
+		right_counter+=1
+
+func _on_Right_body_exited(body):
+	if check_body(body):
+		right_counter-=1

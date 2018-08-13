@@ -2,8 +2,11 @@ extends Node2D
 
 #var level = 5
 var player
+var pause_menu
 
 func _ready():
+	pause_menu = $PauseMenu
+	pause_menu.set_as_toplevel(true)
 	create_level(GameState.current_level)
 
 var creating_level = false
@@ -37,5 +40,7 @@ func _process(delta):
 			return
 		get_tree().paused = true
 		player.get_node("Camera2D/PauseMenu").show()
-		
+#		get_node("PauseMenu").show()
+	if Input.is_action_just_pressed('restart'):
+		SceneLoader.goto_level(GameState.current_level)
 
