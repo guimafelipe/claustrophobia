@@ -21,9 +21,11 @@ func clean():
 func create_map(level):
 	var image = Image.new()
 	print('criando level ', str(level))
-	image.load("res://Assets/LevelImages/level" + str(level) + ".png")
+	var img = load("res://Assets/LevelImages/level" + str(level) + ".png")
+	image.copy_from(img.get_data())
 	var H = image.get_height()
 	var W = image.get_width()
+	print(W, ' ', H)
 	image.lock()
 	for i in range(W):
 		for j in range(H):
@@ -31,6 +33,7 @@ func create_map(level):
 			if color.a > 0:
 				color.a = 1
 				create_object(color, i, j)
+	image.unlock()
 	yield(get_tree().create_timer(1.0), "timeout")
 	emit_signal('finished')
 

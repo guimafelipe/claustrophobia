@@ -2,6 +2,12 @@ extends Node
 
 var max_level_reached = 0
 var current_level = 1
+const import_path = "res://.import/"
+const import_end = ".stex"
+
+var level_images = [
+
+]
 
 func save():
 	var mlr = max_level_reached
@@ -29,3 +35,4 @@ func set_max_level_reached(value):
 
 func _ready():
 	load_game()
+

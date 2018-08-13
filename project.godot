@@ -12,12 +12,16 @@ config_version=3
 
 config/name="LD42"
 run/main_scene="res://Menus/LevelsMenu/LevelsMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://Assets/LevelImages/level2.png"
 
 [autoload]
 
 GameState="*res://Singletons/GameState/GameState.tscn"
 SceneLoader="*res://Singletons/SceneLoader/SceneLoader.tscn"
+
+[display]
+
+window/size/resizable=false
 
 [input]
 

@@ -21,6 +21,7 @@ func create_level(level):
 	$LevelCreator.create_map(level)
 	yield(get_node("LevelCreator"), "finished")
 	player = $LevelCreator.get_player()
+	assert(player != null)
 	player.connect("won", self, "player_won")
 	player.connect("died", self, "player_died")
 	player.let_move()
