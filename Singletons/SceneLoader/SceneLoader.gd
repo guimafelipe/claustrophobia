@@ -5,7 +5,7 @@ var wait_frames
 var time_max = 100
 var current_scene
 
-const MAX_LEVEL = 16
+const MAX_LEVEL = 14
 
 func _ready():
 	var root = get_tree().get_root()
@@ -65,8 +65,8 @@ func set_new_scene(scene_resource):
 	$ColorRect.set_visible(false)
 
 func goto_level(level):
-	if(level == MAX_LEVEL):
-		goto_credits()
+	if(level > MAX_LEVEL):
+		goto_levels_menu()
 		return
 	GameState.current_level = level
 	var level_path = "res://Assets/GameManager/GameManager.tscn"
