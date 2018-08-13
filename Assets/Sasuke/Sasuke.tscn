@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Sasuke/Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://Menus/PauseMenu/PauseMenu.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 13, 23 )
@@ -38,7 +38,7 @@ _sections_unfolded = [ "Offset", "Region", "Transform" ]
 
 position = Vector2( 9.53674e-07, 1.43051e-06 )
 scale = Vector2( 2.46154, 1.3913 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
@@ -99,6 +99,31 @@ scale = Vector2( 2.54524, 1.06667 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[connection signal="body_entered" from="Head" to="." method="_on_Area2D_body_entered"]
+[node name="Foot" type="Area2D" parent="." index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foot" index="0"]
+
+position = Vector2( 0, 21.3009 )
+scale = Vector2( 2.54524, 1.06667 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="Head" to="." method="_on_Head_body_entered"]
+
+[connection signal="body_exited" from="Head" to="." method="_on_Head_body_exited"]
+
+[connection signal="body_entered" from="Foot" to="." method="_on_Foot_body_entered"]
+
+[connection signal="body_exited" from="Foot" to="." method="_on_Foot_body_exited"]
 
 

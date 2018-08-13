@@ -47,6 +47,7 @@ var mushroom_dec = 1.5
 
 func _process(delta):
 	grow(delta)
+	check_colliders()
 
 func grow(delta):
 	if not can_move:
@@ -76,8 +77,30 @@ func reached_goal():
 		return
 	emit_signal('won')
 
-func _on_Area2D_body_entered(body):
-	if not(body is StaticBody2D):
-		return
-	if is_on_floor():
+var foot_counter = 0
+var head_counter = 0
+
+func check_colliders():
+	if foot_counter > 0 and head_counter > 0:
 		die()
+
+func check_body(body):
+	return body is StaticBody2D
+
+func _on_Foot_body_entered(body):
+	if check_body(body):
+		foot_counter+=1
+
+func _on_Foot_body_exited(body):
+	if check_body(body):
+		foot_counter-=1
+
+
+func _on_Head_body_entered(body):
+	if check_body(body):
+		head_counter+=1
+
+
+func _on_Head_body_exited(body):
+	if check_body(body):
+		head_counter-=1
