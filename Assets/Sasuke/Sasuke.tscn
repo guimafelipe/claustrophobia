@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Sasuke/Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://Menus/PauseMenu/PauseMenu.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 13, 22.8306 )
@@ -20,7 +20,7 @@ extents = Vector2( 12.2081, 10.354 )
 custom_solver_bias = 0.0
 extents = Vector2( 5.69308, 28.303 )
 
-[node name="Sasuke" type="KinematicBody2D"]
+[node name="Sasuke" type="KinematicBody2D" index="0"]
 
 position = Vector2( 0, -48 )
 scale = Vector2( 1, 1.5 )
@@ -36,14 +36,16 @@ _sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index", "collisi
 
 position = Vector2( 5.34058e-07, 0 )
 scale = Vector2( 0.16, 0.16 )
+z_index = -1
+z_as_relative = false
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Region", "Transform" ]
+_sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( 9.53674e-07, -0.125581 )
 scale = Vector2( 2.46154, 1.39613 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
@@ -83,7 +85,7 @@ anchor_bottom = 0.5
 margin_left = -64.0
 margin_top = -64.0
 rect_scale = Vector2( 1, 0.666667 )
-_sections_unfolded = [ "Pause", "Rect" ]
+_sections_unfolded = [ "Pause", "Rect", "Visibility" ]
 
 [node name="Head" type="Area2D" parent="." index="3"]
 
