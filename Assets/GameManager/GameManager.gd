@@ -5,7 +5,7 @@ var player
 var pause_menu
 
 func _ready():
-	pause_menu = $PauseMenu
+	pause_menu = $CanvasLayer/PauseMenu
 	pause_menu.set_as_toplevel(true)
 	create_level(GameState.current_level)
 
@@ -40,7 +40,8 @@ func _process(delta):
 		if creating_level:
 			return
 		get_tree().paused = true
-		player.get_node("Camera2D/PauseMenu").show()
+#		player.get_node("Camera2D/PauseMenu").show()
+		pause_menu.show()
 #		get_node("PauseMenu").show()
 	if Input.is_action_just_pressed('restart'):
 		SceneLoader.goto_level(GameState.current_level)

@@ -25,13 +25,13 @@ func let_move():
 	can_move = true
 
 func _physics_process(delta):
-	motion.x = lerp(motion.x, 0, FRICTION)
 	motion.y += G
 	
 	if can_move and Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + XLR8, SPEED)
 	if can_move and Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - XLR8, -SPEED)
+	motion.x = lerp(motion.x, 0, FRICTION)
 	
 	
 	if is_on_floor() || foot_counter > 0:

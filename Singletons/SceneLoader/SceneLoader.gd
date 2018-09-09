@@ -5,7 +5,7 @@ var wait_frames
 var time_max = 100
 var current_scene
 
-const MAX_LEVEL = 14
+const MAX_LEVEL = 15
 
 func _ready():
 	var root = get_tree().get_root()
